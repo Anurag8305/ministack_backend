@@ -9,6 +9,12 @@ noteRouter.get("/", async (req, res) => {
 	res.send(notes);
 });
 
+
+noteRouter.get("/notes", async(req,res)=>{
+    const userID_making_req=req.body.userID;
+    const note=await NoteModel.find({userID:userID_making_req});
+    res.send(note)
+})
 //create notes
 noteRouter.post("/create", async (req, res) => {
 	const payload = req.body;
